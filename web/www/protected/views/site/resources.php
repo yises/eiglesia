@@ -23,4 +23,15 @@
 			<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/download/resources/eiglesia_20140714.sql" target="_blank">Sql</a></p>
 		</div>
 	</div>
+
+	<div class="cajatotal">
+		<div class="foto fl">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/resources/phpmyadmin_bbdd.png" />
+		</div>
+		<div class="texto fl">
+			<h3>Código fuente</h3>
+			<p>Para descargarte el código fuente únicamente tendrás que ir a GITHUB y clonar el proyecto o bien descargarte el zip.</p>
+			<p><a href="https://github.com/yises/eiglesia" target="_blank">GITHUB con el código</a></p>
+		</div>
+	</div>
 </div>
