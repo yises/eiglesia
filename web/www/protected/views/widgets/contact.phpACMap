@@ -1,0 +1,22 @@
+
+<div class="map1">
+	<!-- iframe src="https://maps.google.com/?ie=UTF8&amp;ll=52.24462,14.067993&amp;spn=0.491896,1.352692&amp;t=m&amp;z=10&amp;output=embed"></iframe -->
+	<iframe src="https://maps.google.com/?ie=UTF8&amp;ll=40.437232813532965,-3.7082736999999497&amp;spn=0.491896,1.352692&amp;t=m&amp;z=16&amp;output=embed"></iframe>
+</div>
+<div class="map-mask"></div>
+<div class="map_container_1">
+<div class="address">
+	<h1><span>Madrid</span></h1>
+	<div class="addr_info"><h3>Amistad Cristiana <br>Vallehermoso 70</h3></div>
+	<div class="addr_info"><h3>28004 Madrid</h3></div>
+</div>
+<div class="location"></div>
+<div class="map_buttons h-pc">
+	<div class="map_icon">
+		<a href="https://twitter.com/eiglesiaweb" target="_blank"><img src="img/map_twitter.png" alt="img"></a>
+	</div>
+	<div class="map_icon">
+		<a href="https://www.facebook.com/eiglesiaweb" target="_blank"><img src="img/map_facebook.png" alt="img"></a>
+	</div>
+</div>
+</div>
