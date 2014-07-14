@@ -13,6 +13,63 @@ class MigrationController extends Controller
 		);
 	}
 
+	public function actionTablaOrigen(){
+
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Anglicana' WHERE  denom ='anglicana'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Pentecostal' WHERE  denom ='pentecostal'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Metodista' WHERE  denom ='metodista'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Mesianica' WHERE  denom ='mesianica'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Independiente' WHERE  denom ='independiente'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Escocesa' WHERE  denom ='escocesa'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Carismatica' WHERE  denom ='carismatica'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Accorema' WHERE  denom ='ACCOREMA'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'China' WHERE  denom ='china'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Carismatica' WHERE  denom ='carismatica'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Mesianica' WHERE  denom ='mesianica'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Pentecostal' WHERE  denom ='pentecostal'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Escocesa' WHERE  denom ='escocesa'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Presbitariana' WHERE  denom ='Presbitariana?'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'Pentecostal Independiente' WHERE  denom ='Pentecostal Indepentiente'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		$sql = "UPDATE  zzz_final030614 SET  denom =  'AAHH' WHERE  denom ='AAHH?'";
+		Yii::app()->db->createCommand($sql)->execute();
+
+		/* 
+
+		*/
+		die();
+
+	}
 
 	public function actionIndex(){
 		//Si se vuelve a cargar la BBDD SERÁ NECESARIO PASAR LAS SIGUIENTES QUERIES
@@ -31,9 +88,9 @@ class MigrationController extends Controller
 		$truncateTablas = true;
 		$valoresConstantes = true;
 
-		$sacarProvincias = false;
-		$sacarMunicipios = false;
-		$sacarDenominaciones = false;
+		$sacarProvincias = true;
+		$sacarMunicipios = true;
+		$sacarDenominaciones = true;
 
 		$sacarIglesias = true;
 
