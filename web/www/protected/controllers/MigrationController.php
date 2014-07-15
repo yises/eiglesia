@@ -3,7 +3,7 @@
 class MigrationController extends Controller
 {
 	public $layout = "main";
-	
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -64,7 +64,7 @@ class MigrationController extends Controller
 		$sql = "UPDATE  zzz_final030614 SET  denom =  'AAHH' WHERE  denom ='AAHH?'";
 		Yii::app()->db->createCommand($sql)->execute();
 
-		/* 
+		/*
 
 		*/
 		die();
@@ -73,7 +73,7 @@ class MigrationController extends Controller
 
 	public function actionIndex(){
 		//Si se vuelve a cargar la BBDD SERÁ NECESARIO PASAR LAS SIGUIENTES QUERIES
-		/* 
+		/*
 			UPDATE  zzz_final030614 SET  denom =  'Anglicana' WHERE  denom ='anglicana';
 			UPDATE  zzz_final030614 SET  denom =  'Pentecostal' WHERE  denom ='pentecostal';
 			UPDATE  zzz_final030614 SET  denom =  'Metodista' WHERE  denom ='metodista';
@@ -83,14 +83,14 @@ class MigrationController extends Controller
 			UPDATE  zzz_final030614 SET  denom =  'Carismatica' WHERE  denom ='carismatica';
 			UPDATE  zzz_final030614 SET  denom =  'Accorema' WHERE  denom ='ACCOREMA';
 		*/
-		
 
-		$truncateTablas = true;
-		$valoresConstantes = true;
+		$truncateTablas = false;
+		$valoresConstantes = false;
+		$valoresConstantesActividad = false;
 
-		$sacarProvincias = true;
-		$sacarMunicipios = true;
-		$sacarDenominaciones = true;
+		$sacarProvincias = false;
+		$sacarMunicipios = false;
+		$sacarDenominaciones = false;
 
 		$sacarIglesias = true;
 
@@ -117,7 +117,18 @@ class MigrationController extends Controller
 
 		}
 
-		//Hallamos primeramente todas las provincias 
+		if($valoresConstantesActividad){
+			$sql = 'TRUNCATE activity_type';
+			Yii::app()->db->createCommand($sql)->execute();
+			echo '<p>activity_type vaciado</p>';
+
+			$sql = "INSERT INTO activity_type (id_activity_type,name,description) VALUES (1,'Reunión principal','Reunión principal')";
+			Yii::app()->db->createCommand($sql)->execute();
+
+		}
+
+
+		//Hallamos primeramente todas las provincias
 		if($sacarProvincias){
 
 			if($truncateTablas){
@@ -220,7 +231,7 @@ class MigrationController extends Controller
 			$iglesias=Yii::app()->db->createCommand($sql)->queryAll();
 
 			echo '<p>Deberian insertarse '.count($iglesias).' iglesias.</p>';
-			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0;
+			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0; $numHorarios=0;
 
 			foreach($iglesias as $iglesia){
 				$existe = 0;
@@ -240,7 +251,6 @@ class MigrationController extends Controller
 				$provincia=Yii::app()->db->createCommand($sql)->queryRow();
 				$sql = 'SELECT id_municipality FROM municipality WHERE name="'.$iglesia['municipio'].'"';
 				$municipality=Yii::app()->db->createCommand($sql)->queryRow();
-				
 
 				$sql = 'INSERT INTO address (latitude,longitude,name,street,`number`,zipcode,is_active,id_church,id_municipality,id_province) VALUES ("'.$iglesia["lat"].'","'.$iglesia["lon"].'","'.$iglesia["nombre"].'","'.$iglesia["direccion"].'","'.$iglesia["numero"].' '.$iglesia["extra"].'","'.$iglesia["cp"].'",'.$existe.','.$idChurch.','.$municipality['id_municipality'].','.$provincia['id_province'].')';
 				Yii::app()->db->createCommand($sql)->execute();
@@ -250,6 +260,15 @@ class MigrationController extends Controller
 					$sql = 'INSERT INTO pobox (id_church,data,zipcode) VALUES ('.$idChurch.',"'.$iglesia["apdo"].'","'.$iglesia['cpapdo'].'")';
 					Yii::app()->db->createCommand($sql)->execute();
 					$numApartados++;
+				}
+
+				if($iglesia['horarios']!=''){
+
+					$description = str_replace('"','',$iglesia['horarios']);
+					//echo '<p>Horarios description:'.$description.'</p>';
+					$sql = 'INSERT INTO activity (description,id_church,id_activity_type) VALUES ("'.$description.'",'.$idChurch.',1)';
+					Yii::app()->db->createCommand($sql)->execute();
+					$numHorarios++;
 				}
 
 				//En caso de que tenga teléfono lo incluimos
@@ -331,13 +350,14 @@ class MigrationController extends Controller
 						Yii::app()->db->createCommand($sql)->execute();
 						$numWebs++;
 					}
-				}
 
+				}
 
 				$num++;
 			}
 			echo '<p>Iglesias y direcciones:'.$num.'</p>';
 			echo '<p>Apartados de correos:'.$numApartados.'</p>';
+			echo '<p>Actividad principal:'.$numHorarios.'</p>';
 			echo '<p>Telefonos:'.$numTelefonos.'</p>';
 			echo '<p>Emails:'.$numEmails.'</p>';
 			echo '<p>Webs:'.$numWebs.'</p>';
