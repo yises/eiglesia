@@ -1914,6 +1914,8 @@ iframe{
 
 .fr{float:right;}
 .fl{float:left;}
+.w100,.w90,.w80,.w70,.w60,.w50,.w40,.w30,.w20,.w10{float:left;}
+.w100{width:100%;}.w90{width:90%;}.w80{width:80%;}.w70{width:70%;}.w60{width:60%;}.w50{width:50%;}.w40{width:40%;}.w30{width:30%;}.w20{width:20%;}.w10{width:10%;}
 
 #search{max-width:960px;margin:20px auto 60px auto;}
 #search form div{float:left;width:100%;}
@@ -1925,7 +1927,7 @@ a.button, input.button{height:40px;padding:0px 0px 0px 0px;border:none;width:100
 .logo a{text-decoration:none;color:white;}
 
 
-.tamanyo960{max-width:960px;margin:0 auto;position:relative;}
+.tamanyo960{max-width:960px;margin:0 auto 20px auto;position:relative;}
 .tamanyo960 h1{margin:20px 0px 20px 20px;}
 .tamanyo960 .cajatotal{width:100%;float:left;margin-bottom:20px;}
 .tamanyo960 .cajatotal .foto{width:46%;padding:10px 2% 10px 2%;}

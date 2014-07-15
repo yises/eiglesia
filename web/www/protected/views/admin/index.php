@@ -1,13 +1,9 @@
-<?php
-/* @var $this AdminController */
+<div class="tamanyo960">
+	<h1><span>Administración</span></h1>
 
-$this->breadcrumbs=array(
-	'Admin',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+	<div class="cajatotal">
+		<p><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin/ChurchIndex">Iglesias</a></p>
+	</div>
+</div>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+

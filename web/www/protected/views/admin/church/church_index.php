@@ -12,8 +12,11 @@ $this->menu=array(
 );
 ?>
 
-<h1>Churches</h1>
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'church/church_view',
-)); ?>
+<div class="tamanyo960">
+	<h1><span>Iglesias</span></h1>
+
+	<?php $this->widget('zii.widgets.CListView', array(
+	    'dataProvider'=>$dataProvider,
+	    'itemView'=>'church/church_index_row',
+	)); ?>
+</div>

@@ -51,6 +51,7 @@ class SiteController extends Controller
 		$dataGeneral = array();
 
 		$data=array();
+
 		//$dataGeneral['carrousel'] = $this->renderPartial('/widgets/carrousel',$data,true);
 		$dataGeneral['features'] = $this->renderPartial('/widgets/features',$data,true);
 
@@ -87,6 +88,10 @@ class SiteController extends Controller
 
 		$this->render('contact_sent',$data);
 		
+	}
+
+	public function actionKnowMore(){
+		$this->render('know_more',array());
 	}
 
 
