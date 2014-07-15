@@ -62,8 +62,13 @@
 <!-- Counter plugin -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.counters.min.js"></script>
 
+<p class="p_bottom">¿Quieres <span>saber más</span> de este proyecto?</p>
+<div class="trial"><a href="<?php echo Yii::app()->request->baseUrl; ?>/site/knowMore" >Saber más</a></div>
+<div class="polosochka"></div>
 
-<p class="p_bottom">¿Quieres <span>formar parte</span> de este proyecto? ¿Quieres confirmar la situación de una iglesia?<br>
+
+
+<p class="p_bottom"><br/> ¿Quieres <span>formar parte</span> de este proyecto? ¿Quieres confirmar la situación de una iglesia?<br>
 	Es totalmente gratuito.</p>
 <div class="trial"><a href="#signup" >Verificar mi iglesia</a></div>
 <div class="polosochka"></div>

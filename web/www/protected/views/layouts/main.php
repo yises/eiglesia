@@ -38,7 +38,13 @@
 				<li><a href="#intro" class="selected">intro</a></li>
 				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/site/eiglesia">Soy iglesia</a></li>
 			</ul>
-			<div class="login">Acceder</div>
+
+			<?php if(Yii::app()->user->name=='Guest'){
+				echo '<div class="login">Acceder</div>';
+			}else{
+				echo '<div class=""><a href="'.Yii::app()->request->baseUrl.'/admin/index" class="form2 button" style="text-align:center;text-decoration:none;float:right;padding-top:10px;height:30px;">Admin</a></div>';
+			}?>
+
 			<div class="mbl-menu" id="mbl-button">
 				<div class="mbl_menu_el"></div>
 				<div class="mbl_menu_el"></div>
