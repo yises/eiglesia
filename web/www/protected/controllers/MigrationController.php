@@ -231,7 +231,7 @@ class MigrationController extends Controller
 			$iglesias=Yii::app()->db->createCommand($sql)->queryAll();
 
 			echo '<p>Deberian insertarse '.count($iglesias).' iglesias.</p>';
-			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0; $numHorarios=0;
+			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0; $numHorarios=0; $numIgleMadre = 0;
 
 			foreach($iglesias as $iglesia){
 				$existe = 0;
@@ -243,7 +243,7 @@ class MigrationController extends Controller
 				$sql = 'SELECT id_denomination FROM denomination WHERE name="'.$iglesia['denom'].'"';
 				$denominacion=Yii::app()->db->createCommand($sql)->queryRow();
 
-				$sql = 'INSERT INTO church (name,id_motherchurch,numbermember,`exists`,id_denomination) VALUES ("'.$iglesia["nombre"].'",'.$iglesia["igmadre"].','.$iglesia["miembros"].','.$existe.','.$denominacion['id_denomination'].')';
+				$sql = 'INSERT INTO church (name,numbermember,`exists`,id_denomination) VALUES ("'.$iglesia["nombre"].'",'.$iglesia["miembros"].','.$existe.','.$denominacion['id_denomination'].')';
 				Yii::app()->db->createCommand($sql)->execute();
 
 				$idChurch = Yii::app()->db->getLastInsertID();
@@ -355,12 +355,37 @@ class MigrationController extends Controller
 
 				$num++;
 			}
+
+			foreach($iglesias as $iglesia){
+
+				if ($iglesia['igmadre']!=0){
+
+					//Buscar idMadre en la tabla origen
+					$sql = "SELECT nombre FROM zzz_final030614 WHERE id='".$iglesia["igmadre"]."'";
+					$NombreMadre=Yii::app()->db->createCommand($sql)->queryRow();
+					//echo '<p>NombreMadre'.$NombreMadre['nombre'];
+
+					//Buscar el nuevo id de la iglesia Madre
+					$sql = 'SELECT id_church FROM church WHERE name="'.$NombreMadre["nombre"].'"';
+					$IdMadre=Yii::app()->db->createCommand($sql)->queryRow();
+
+					//REGISTROS DUPLICADOS EN IGLESIA! Un nombre puede tener varios id
+					//echo ' '.$IdMadre['id_church'].'<p>';
+					//Modificamos el registro de la iglesia con el Id de la iglesia Madre
+					$sql = "UPDATE church SET id_motherchurch='".$IdMadre['id_church']."' WHERE id_church='".$iglesia['id']."'";
+					Yii::app()->db->createCommand($sql)->execute();
+
+					$numIgleMadre++;
+				}
+			}
+
 			echo '<p>Iglesias y direcciones:'.$num.'</p>';
 			echo '<p>Apartados de correos:'.$numApartados.'</p>';
 			echo '<p>Actividad principal:'.$numHorarios.'</p>';
 			echo '<p>Telefonos:'.$numTelefonos.'</p>';
 			echo '<p>Emails:'.$numEmails.'</p>';
 			echo '<p>Webs:'.$numWebs.'</p>';
+			echo '<p>IgleMadre:'.$numIgleMadre.'</p>';
 		}
 	}
 }
