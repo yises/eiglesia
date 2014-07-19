@@ -7,9 +7,13 @@
 			<div>
 				<a id="busqueda_avanzada" href="#">Búsqueda avanzada</a>
 			</div>
-			<div id="busqueda_avanzada_oculto" style="display:none;">
-				<div>
+			<div id="busqueda_avanzada_oculto">
+				<!-- div>
 					<input type="checkbox" name="" style="height:auto;" /> blablablabla
+				</div -->
+				<div>
+					<label>Código postal</label>
+					<input type="text" name="zipcode" placeholder="Código postal" style="width:400px;" />
 				</div>
 			</div>
 

@@ -28,15 +28,47 @@ class SiteController extends Controller
 		$dataGeneral = array();
 
 		$searchTerm = $_POST['searchterm'];
+		$zipcode = $_POST['zipcode'];
 
+		$sqlBase = 'SELECT c.name,a.street,a.number,a.zipcode,m.name as municipality_name,p.name as province_name FROM church c 
+						INNER JOIN address a ON a.id_church=c.id_church 
+						INNER JOIN municipality m ON m.id_municipality=a.id_municipality
+						INNER JOIN province p ON p.id_province=a.id_province
+					WHERE 1 ';
+		$whereSql = '';
 		//TODO JPV In here is neccesary to make a good search, i will start making my own
-		//$sql = 'SELECT id_province'
-		$sql = 'SELECT id_municipality FROM municipality WHERE name LIKE "%'.$searchTerm.'%"';
-		$municipality=Yii::app()->db->createCommand($sql)->queryRow();
+
+		//input zipcode
+		if(isset($zipcode) && $zipcode!=""){
+			$whereSql .= ' AND zipcode LIKE "%'.$zipcode.'%"';
+		}
+
+		//General input
+		if(isset($searchTerm) && $searchTerm!=""){
+			//$sql = 'SELECT id_province'
+			$sql = 'SELECT id_municipality FROM municipality WHERE name LIKE "%'.$searchTerm.'%"';
+			$municipality=Yii::app()->db->createCommand($sql)->queryRow();
+			
+			if(!isset($municipality['id_municipality'])){
+				$municipality['id_municipality'] = 0;
+			}
+			$whereSql .= ' AND a.id_municipality='.$municipality['id_municipality'];
+		}
+
+		$whereSql .= ' AND c.`exists`=1 AND a.is_active=1 LIMIT 0,10';
+
+		$sql = $sqlBase.$whereSql;
 		
-		$sql = 'SELECT c.name,a.street,a.number FROM church c INNER JOIN address a ON a.id_church=c.id_church WHERE id_municipality='.$municipality['id_municipality'].' AND c.`exists`=1 AND a.is_active=1 LIMIT 0,10';
 		$dataGeneral['churchs'] = Yii::app()->db->createCommand($sql)->queryAll();
-		
+
+		if(count($dataGeneral['churchs'])==0){
+			$whereSql = ' AND c.name LIKE "%'.$searchTerm.'%"';
+			$whereSql .= ' AND c.`exists`=1 AND a.is_active=1 LIMIT 0,10';
+			$sql = $sqlBase.$whereSql;
+			$dataGeneral['churchs'] = Yii::app()->db->createCommand($sql)->queryAll();
+		}
+
+
 		$this->render('search',$dataGeneral);
 	}
 

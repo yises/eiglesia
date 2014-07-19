@@ -11,9 +11,9 @@
 	<?php echo $features; ?>
 </section>
     
-<section class="wraper_bg-bright" id="gallery">
-	<?php echo $gallery; ?>
-</section>
+<!-- section class="wraper_bg-bright" id="gallery">
+	<?php /* echo $gallery; */ ?>
+</section -->
     
 
 <!-- section class="wraper_bg-bright" id="plan">
@@ -24,9 +24,9 @@
 	<?php echo $team; ?>
 </section>
 
-<section class="wraper_bg-bright" id="feedback">
-	<?php echo $workWithUs; ?>
-</section>
+<!-- section class="wraper_bg-bright" id="feedback">
+	<?php /*echo $workWithUs;*/ ?>
+</section -->
     
 	
 <section class="wraper_bg-bright wraper-follow-us" id="blog">

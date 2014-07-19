@@ -42,7 +42,7 @@
 
 <div class="counter_cont t-clear">
 	<div class="counter_item">
-		<span id="counter-1">1649</span>
+		<span id="counter-1">5652</span>
 		<h3>iglesias registradas</h3>
 	</div>
 	<div class="counter_item">
@@ -54,7 +54,7 @@
 		<h3>personas involucradas</h3>
 	</div>
 	<div class="counter_item last">
-		<span id="counter-4">67</span>
+		<span id="counter-4">109</span>
 		<h3>horas invertidas</h3>
 	</div>
 </div>
@@ -68,7 +68,7 @@
 
 
 
-<p class="p_bottom"><br/> ¿Quieres <span>formar parte</span> de este proyecto? ¿Quieres confirmar la situación de una iglesia?<br>
+<!-- p class="p_bottom"><br/> ¿Quieres <span>formar parte</span> de este proyecto? ¿Quieres confirmar la situación de una iglesia?<br>
 	Es totalmente gratuito.</p>
 <div class="trial"><a href="#signup" >Verificar mi iglesia</a></div>
-<div class="polosochka"></div>
+<div class="polosochka"></div -->
