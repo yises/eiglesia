@@ -84,7 +84,7 @@ class MigrationController extends Controller
 			UPDATE  zzz_final030614 SET  denom =  'Accorema' WHERE  denom ='ACCOREMA';
 		*/
 
-		$truncateTablas = false;
+		$truncateTablas = true;
 		$valoresConstantes = false;
 		$valoresConstantesActividad = false;
 
@@ -224,6 +224,10 @@ class MigrationController extends Controller
 				$sql = 'TRUNCATE www';
 				Yii::app()->db->createCommand($sql)->execute();
 				echo '<p>WWW vaciado</p>';
+
+				$sql = 'TRUNCATE servant';
+				Yii::app()->db->createCommand($sql)->execute();
+				echo '<p>Pastores vaciado</p>';
 			}
 
 			$iglesias=array();
@@ -231,7 +235,7 @@ class MigrationController extends Controller
 			$iglesias=Yii::app()->db->createCommand($sql)->queryAll();
 
 			echo '<p>Deberian insertarse '.count($iglesias).' iglesias.</p>';
-			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0; $numHorarios=0; $numIgleMadre = 0;
+			$num = 0; $numApartados=0; $numTelefonos=0;	$numEmails=0; $numWebs=0; $numHorarios=0; $numIgleMadre = 0; $numPastor =0;
 
 			foreach($iglesias as $iglesia){
 				$existe = 0;
@@ -353,10 +357,33 @@ class MigrationController extends Controller
 
 				}
 
+				$pastores=array();
+				$sql = 'SELECT nombre1,nombre2,apellido1,apellido2 FROM zzz_intermedia WHERE org1 ='. $iglesia["id"].' OR org2 ='. $iglesia["id"].' OR org3 ='. $iglesia["id"].' OR org4 ='. $iglesia["id"].' OR org5 ='. $iglesia["id"].' OR org6 ='. $iglesia["id"].' OR org7 ='. $iglesia["id"].' OR org8 ='. $iglesia["id"];
+				$pastores=Yii::app()->db->createCommand($sql)->queryAll();
+
+				echo '<p>Deberian insertarse '.count($pastores).' pastores de la iglesia '.$idChurch.'.</p>';
+				foreach($pastores as $pastor){
+
+
+					$sql = "SELECT id_servant FROM servant WHERE name ='".$pastor["nombre1"]." ".$pastor["nombre2"]."' AND lastname='".$pastor["apellido1"]." ".$pastor["apellido2"]."'";
+					$servants =Yii::app()->db->createCommand($sql)->queryAll();
+
+					if (count($servants)==0){
+						$sql = "INSERT INTO servant (name,lastname) VALUES ('".$pastor["nombre1"]." ".$pastor["nombre2"]."','".$pastor["apellido1"]." ".$pastor["apellido2"]."')";
+						Yii::app()->db->createCommand($sql)->execute();
+						$idServant = Yii::app()->db->getLastInsertID();
+						$numPastor++;
+					}
+					$sql = "INSERT INTO church_servant (id_servant,id_church) VALUES ('".$idServant."','".$idChurch."')";
+					Yii::app()->db->createCommand($sql)->execute();
+
+				}
+				echo '<p>Pastores relacionados con iglesias:'.$numPastor.'</p>';
+
 				$num++;
 			}
 
-			foreach($iglesias as $iglesia){
+			/*foreach($iglesias as $iglesia){
 
 				if ($iglesia['igmadre']!=0){
 
@@ -377,8 +404,22 @@ class MigrationController extends Controller
 
 					$numIgleMadre++;
 				}
-			}
+			}*/
 
+			// Se necesitan cargar aquellos servents que no tienen inglesia asignada
+			//Pensar que hacer con estos ¿los asignamos a un municipio? a una cuidad?
+
+			$pastores=array();
+			$sql = 'SELECT nombre1, nombre2, apellido1, apellido2 FROM zzz_intermedia WHERE org1 = 0';
+			$pastores=Yii::app()->db->createCommand($sql)->queryAll();
+
+			echo '<p>Deberian insertarse sin que tengan iglesia asignada '.count($pastores).' pastores.</p>';
+			foreach($pastores as $pastor){
+				$sql = "INSERT INTO servant (name,lastname) VALUES ('".$pastor["nombre1"]." ".$pastor["nombre2"]."','".$pastor["apellido1"]." ".$pastor["apellido2"]."')";
+				Yii::app()->db->createCommand($sql)->execute();
+				$numPastor++;
+			}
+			echo '<p>Pastores:'.$numPastor.'</p>';
 			echo '<p>Iglesias y direcciones:'.$num.'</p>';
 			echo '<p>Apartados de correos:'.$numApartados.'</p>';
 			echo '<p>Actividad principal:'.$numHorarios.'</p>';
@@ -387,5 +428,6 @@ class MigrationController extends Controller
 			echo '<p>Webs:'.$numWebs.'</p>';
 			echo '<p>IgleMadre:'.$numIgleMadre.'</p>';
 		}
+
 	}
 }
