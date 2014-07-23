@@ -364,7 +364,7 @@ class MigrationController extends Controller
 				echo '<p>Deberian insertarse '.count($pastores).' pastores de la iglesia '.$idChurch.'.</p>';
 				foreach($pastores as $pastor){
 
-
+					//Si ya lo hemos insertado anteriormente
 					$sql = "SELECT id_servant FROM servant WHERE name ='".$pastor["nombre1"]." ".$pastor["nombre2"]."' AND lastname='".$pastor["apellido1"]." ".$pastor["apellido2"]."'";
 					$servants =Yii::app()->db->createCommand($sql)->queryAll();
 
@@ -373,6 +373,9 @@ class MigrationController extends Controller
 						Yii::app()->db->createCommand($sql)->execute();
 						$idServant = Yii::app()->db->getLastInsertID();
 						$numPastor++;
+					}else{
+						$idServant = $servants[0]['id_servant'];
+						echo '<p>Ya está insertado'.$idServant.' <p>';
 					}
 					$sql = "INSERT INTO church_servant (id_servant,id_church) VALUES ('".$idServant."','".$idChurch."')";
 					Yii::app()->db->createCommand($sql)->execute();
