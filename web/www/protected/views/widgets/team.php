@@ -15,9 +15,17 @@
 		<h3><span>Benjamin Frugoni</span></h3>
 		<p>Comercial</p>
 		<div class="icon_cont">
+			<span class='twitter'>
+				<a href="https://twitter.com/benjaminfrugoni" target="_blank">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_twitter.png" alt="img">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/twitter.png" alt="img">
+				</a>
+			</span>
 			<span class='linkedin'>
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_linkedin.png" alt="img">
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/linkedin.png" alt="img">
+				<a href="https://www.linkedin.com/in/benjaminfrugoni" target="_blank">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_linkedin.png" alt="img">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/linkedin.png" alt="img">
+				</a>
 			</span>
 		</div>
 	</div>
@@ -27,8 +35,10 @@
 		<p>Comercial</p>
 		<div class="icon_cont">
 			<span class='linkedin'>
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_linkedin.png" alt="img">
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/linkedin.png" alt="img">
+				<a href="http://es.linkedin.com/in/steffaniamorales" target="_blank">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_linkedin.png" alt="img">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/linkedin.png" alt="img">
+				</a>
 			</span>
 		</div>
 	</div>
@@ -38,7 +48,7 @@
 		<p>Jefa de equipo</p>
 		<div class="icon_cont">
 			<span class='linkedin'>
-				<a href="https://www.linkedin.com/pub/lara-manj%C3%B3n-r%C3%ADo/21/23a/47" target="_blank">
+				<a href="https://www.linkedin.com/in/laramanjonrio" target="_blank">
 					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/gray_linkedin.png" alt="img">
 					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/linkedin.png" alt="img">
 				</a>
