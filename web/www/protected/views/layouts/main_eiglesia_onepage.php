@@ -15,19 +15,16 @@
 	<link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/mobile.css"/>
 	<link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jQuery.Opie.PortfolioGallery.css" media="screen" />
 	<link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/component.css" />
-	
-	
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<!-- JS -->
 	<!-- Jquery and Jquery migrate (for older plugins) -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-migrate-1.2.1.min.js"></script>
 	<!-- JQuery UI for havier animations -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
 	<!-- Jquery Portfolio gallery dependencies -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jQuery.easing.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jQuery.Opie.PortfolioGallery.min.js"></script>
@@ -39,7 +36,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.slider.min.js"></script>
 	<!-- Scroller plugins -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/cbpScroller.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/niceScroll.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/niceScroll.min.js"></script>
 
 </head>
 <body>

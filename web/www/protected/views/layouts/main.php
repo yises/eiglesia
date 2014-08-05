@@ -20,7 +20,7 @@
 	<![endif]-->
 	<!-- JS -->
 	<!-- Jquery -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/global.js"></script>
 </head>
 <body>

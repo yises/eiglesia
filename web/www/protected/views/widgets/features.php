@@ -1,6 +1,6 @@
 
 <h1 class="h-pc"><span>Información de eiglesia</span></h1>
-<h1 class="h-mbl">Información de eiglesia</h1>
+<h1 class="h-mbl">Información de<br/> eiglesia</h1>
 <div class="polosochka2"></div>
 <h3>La idea se resume en esta frase: <br /> Accesibilidad a toda iglesia local vía web</h3>
 <div class="cbp-so-scroller feature_cont_slider_mobile">
