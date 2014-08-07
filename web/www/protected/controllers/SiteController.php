@@ -29,6 +29,7 @@ class SiteController extends Controller
 
 		$searchTerm = $_POST['searchterm'];
 		$zipcode = $_POST['zipcode'];
+		$idProvince = $_POST['idProvince'];
 
 		$sqlBase = 'SELECT c.name,a.street,a.number,a.zipcode,m.name as municipality_name,p.name as province_name FROM church c 
 						INNER JOIN address a ON a.id_church=c.id_church 
@@ -41,6 +42,11 @@ class SiteController extends Controller
 		//input zipcode
 		if(isset($zipcode) && $zipcode!=""){
 			$whereSql .= ' AND zipcode LIKE "%'.$zipcode.'%"';
+		}
+
+		//input idProvince
+		if(isset($idProvince) && $idProvince!=""){
+			$whereSql .= ' AND p.id_province = '.$idProvince;
 		}
 
 		//General input

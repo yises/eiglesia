@@ -1921,6 +1921,7 @@ iframe{
 #search form div{float:left;width:100%;}
 #search form div a{text-decoration:none;}
 #search #busqueda_avanzada_oculto{display:none;margin-bottom:20px;}
+#search #map{float:left;width:100%;margin:0 0 20px 0px;}
 
 
 a.button, input.button{height:40px;padding:0px 0px 0px 0px;border:none;width:100px;background-color:#43a4e2;color:white;text-transform:uppercase;font-size:14px;border-radius:3px;}
