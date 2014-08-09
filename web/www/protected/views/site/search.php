@@ -4,11 +4,27 @@
 	<?php
 
 	foreach($churchs as $church){
+		$srcImage = '';
+		if($church['image']==null || $church['image'=='']){
+			$srcImage = 'http://placehold.it/152x152';
+		}else{
+			$srcImage = Yii::app()->request->baseUrl.'/eiglesia/address/'.$church['image'];
+		}
 		echo '
 			<div class="cajatotal">
-				<h3>'.$church['name'].'</h3>
-				<p>Dirección: '.$church['street'].' '.$church['number'].'</p>
-				<p>'.$church['zipcode'].' '.$church['municipality_name'].' ('.$church['province_name'].')</p>
+				<div class="fl" style="width:152px;margin-right:10px;">
+					<a href="">
+						<img src="'.$srcImage.'" width="152" height="152" />
+					</a>
+				</div>
+				<div class="fl" style="width:550px;margin-right:10px;padding-top:20px;">
+					<h3><a href="">'.$church['name'].'</a></h3>
+					<p>Dirección: '.$church['street'].' '.$church['number'].'</p>
+					<p>'.$church['zipcode'].' '.$church['municipality_name'].' ('.$church['province_name'].')</p>
+				</div>
+				<div class="fl" style="width:190px;padding-top:20px;">
+					<p>Porcentaje: 0</p>
+				</div>
 			</div>
 		';
 	}

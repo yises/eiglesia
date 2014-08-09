@@ -31,7 +31,7 @@
 		<section class="head-els">
 			<div class="logo">
 				<a href="<?php echo Yii::app()->request->baseUrl; ?>/">
-					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/logo/eiglesia_logo_small.png" alt="img">iglesia
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/logo/eiglesia_logo_small.png" width="42" height="42" alt="img">iglesia
 				</a>
 			</div>
 			<ul class="menu h-pc">
@@ -83,7 +83,7 @@
 		<section class="head-els footer">
 			<div class="logo">
 				<a href="<?php echo Yii::app()->request->baseUrl; ?>/">
-					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/logo/eiglesia_logo_small.png" alt="img">
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/logo/eiglesia_logo_small.png" width="42" height="42" alt="img">
 				</a>
 			</div>
 			<ul class="menu h-pc">
@@ -101,6 +101,15 @@
 	</footer>
 	</div>
 	
-	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-53671222-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 </html>

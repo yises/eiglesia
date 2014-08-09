@@ -11,7 +11,7 @@
 <div class="cbp-so-scroller team_scroller_mobile_cont">
 <div class="team_members cbp-so-section">
 	<div class="member cbp-so-side cbp-so-side-top">
-		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/benji_157x157.png" alt="img"></div>
+		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/benji_157x157.png" width="157" height="157" alt="img"></div>
 		<h3><span>Benjamin Frugoni</span></h3>
 		<p>Comercial</p>
 		<div class="icon_cont">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="member cbp-so-side cbp-so-side-bottom">
-		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/steffy_157x157.png" alt="img"></div>
+		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/steffy_157x157.png" width="157" height="157" alt="img"></div>
 		<h3><span>Steffy Morales</span></h3>
 		<p>Comercial</p>
 		<div class="icon_cont">
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div class="member cbp-so-side cbp-so-side-top">
-		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/lara_157x157.png" alt="img"></div>
+		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/lara_157x157.png" width="157" height="157" alt="img"></div>
 		<h3><span>Lara Manjón</span></h3>
 		<p>Jefa de equipo</p>
 		<div class="icon_cont">
@@ -56,7 +56,7 @@
 		</div>
 	</div>
 	<div class="member cbp-so-side cbp-so-side-bottom">
-		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/jesus_157x157.png" alt="img"></div>
+		<div class="img_border hi-icon1"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/our/team/jesus_157x157.png" width="157" height="157" alt="img"></div>
 		<h3><span>Jesús Pérez</span></h3>
 		<p>Programador</p>
 		<div class="icon_cont">
