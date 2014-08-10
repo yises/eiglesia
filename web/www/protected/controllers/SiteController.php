@@ -31,7 +31,7 @@ class SiteController extends Controller
 		$zipcode = $_POST['zipcode'];
 		$idProvince = $_POST['idProvince'];
 
-		$sqlBase = 'SELECT c.name,a.street,a.number,a.zipcode,a.image,m.name as municipality_name,p.name as province_name FROM church c 
+		$sqlBase = 'SELECT c.id_church,c.name,a.street,a.number,a.zipcode,a.image,m.name as municipality_name,p.name as province_name FROM church c 
 						INNER JOIN address a ON a.id_church=c.id_church 
 						INNER JOIN municipality m ON m.id_municipality=a.id_municipality
 						INNER JOIN province p ON p.id_province=a.id_province

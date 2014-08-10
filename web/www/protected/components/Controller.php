@@ -40,7 +40,7 @@ class Controller extends CController
 	{
 		return array(
 			array('allow', // allow access to login page
-				'controllers'=>array('site'),
+				'controllers'=>array('site','eiglesia'),
 				'users'=>array('*'),
 				),
 			/*array('allow', // allow access to login page
