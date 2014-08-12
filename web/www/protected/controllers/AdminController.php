@@ -113,11 +113,11 @@ class AdminController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Church']))
-		{
+		if(isset($_POST['Church'])){
 			$model->attributes=$_POST['Church'];
-			if($model->save())
+			if($model->save()){
 				$this->redirect(array('view','id'=>$model->id_church));
+			}
 		}
 
 		$this->render('update',array(
