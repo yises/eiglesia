@@ -29,6 +29,13 @@ class UserIdentity extends CUserIdentity
 			$this->username = $admin[0]->admin_name;
 			$this->is_superadmin = $admin[0]->is_superadmin;
 			$this->errorCode=self::ERROR_NONE;
+
+			//We save the now expression
+			$admin = Admin::model()->findByPk($admin[0]->id_admin);
+			$admin->last_login = new CDbExpression('NOW()');
+			$admin->save();
+
+
 			return true;
 		}
 		/*$users=array(
