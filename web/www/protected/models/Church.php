@@ -10,21 +10,8 @@
  * @property integer $id_motherchurch
  * @property integer $numbermember
  * @property integer $exists
+ * @property integer $points
  * @property integer $id_denomination
- *
- * The followings are the available model relations:
- * @property Activity[] $activities
- * @property Address[] $addresses
- * @property Denomination $idDenomination
- * @property ChurchActivityunique[] $churchActivityuniques
- * @property ChurchBadge[] $churchBadges
- * @property ChurchServant[] $churchServants
- * @property Email[] $emails
- * @property Gallery[] $galleries
- * @property Pobox[] $poboxes
- * @property Preach[] $preaches
- * @property Telephone[] $telephones
- * @property Www[] $wwws
  */
 class Church extends CActiveRecord
 {
@@ -44,13 +31,13 @@ class Church extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_denomination', 'required'),
-			array('id_motherchurch, numbermember, exists, id_denomination', 'numerical', 'integerOnly'=>true),
+			array('points, id_denomination', 'required'),
+			array('id_motherchurch, numbermember, exists, points, id_denomination', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_church, name, description, id_motherchurch, numbermember, exists, id_denomination', 'safe', 'on'=>'search'),
+			array('id_church, name, description, id_motherchurch, numbermember, exists, points, id_denomination', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,18 +49,6 @@ class Church extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'activities' => array(self::HAS_MANY, 'Activity', 'id_church'),
-			'addresses' => array(self::HAS_MANY, 'Address', 'id_church'),
-			'idDenomination' => array(self::BELONGS_TO, 'Denomination', 'id_denomination'),
-			'churchActivityuniques' => array(self::HAS_MANY, 'ChurchActivityunique', 'id_church'),
-			'churchBadges' => array(self::HAS_MANY, 'ChurchBadge', 'id_church'),
-			'churchServants' => array(self::HAS_MANY, 'ChurchServant', 'id_church'),
-			'emails' => array(self::HAS_MANY, 'Email', 'id_church'),
-			'galleries' => array(self::HAS_MANY, 'Gallery', 'id_church'),
-			'poboxes' => array(self::HAS_MANY, 'Pobox', 'id_church'),
-			'preaches' => array(self::HAS_MANY, 'Preach', 'id_church'),
-			'telephones' => array(self::HAS_MANY, 'Telephone', 'id_church'),
-			'wwws' => array(self::HAS_MANY, 'Www', 'id_church'),
 		);
 	}
 
@@ -89,6 +64,7 @@ class Church extends CActiveRecord
 			'id_motherchurch' => 'Id Motherchurch',
 			'numbermember' => 'Numbermember',
 			'exists' => 'Exists',
+			'points' => 'Points',
 			'id_denomination' => 'Id Denomination',
 		);
 	}
@@ -117,6 +93,7 @@ class Church extends CActiveRecord
 		$criteria->compare('id_motherchurch',$this->id_motherchurch);
 		$criteria->compare('numbermember',$this->numbermember);
 		$criteria->compare('exists',$this->exists);
+		$criteria->compare('points',$this->points);
 		$criteria->compare('id_denomination',$this->id_denomination);
 
 		return new CActiveDataProvider($this, array(

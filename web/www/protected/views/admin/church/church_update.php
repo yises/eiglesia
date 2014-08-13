@@ -1,42 +1,56 @@
 
+<p>Nombre: <?php echo $model->name ?></p>
+<p>Descripción: <?php echo $model->description ?></p>
+<p>Puntos: <?php echo $model->points ?></p>
 
 <?php
-	//var_dump($model);
-	
+	$cosasAHacer = array();
+
 	/*Gallery*/
 	if(count($galleries)==0){
-		echo '<p>Tienes que añadir galerías de imágenes</p>';
+		$cosasAHacer[] = 'Galerías de imágenes';
 	}
 
 	/*Preaches*/
 	if(count($preaches)==0){
-		echo '<p>Tienes que añadir predicaciones</p>';
+		$cosasAHacer[] = 'Predicaciones';
 	}
 
 	/*Address*/
 	if(count($address)==0){
-		echo '<p>Tienes que añadir direcciones</p>';
+		$cosasAHacer[] = 'Direcciones';
 	}
 
 	/*Servants*/
 	if(count($servants)==0){
-		echo '<p>Tienes que añadir pastores/ancianos/responsables</p>';
+		$cosasAHacer[] = 'Pastores/ancianos/responsables';
 	}
 
 	/*wws*/
 	if(count($wwws)==0){
-		echo '<p>Tienes que añadir páginas webs</p>';
+		$cosasAHacer[] = 'Páginas webs';
 	}
 
 	/*badges*/
 	if(count($badges)==0){
-		echo '<p>Tienes que añadir badges</p>';
+		$cosasAHacer[] = 'Badges';
 	}
 
 	/*Activities*/
 	if(count($activities)==0){
-		echo '<p>Tienes que añadir actividades</p>';
+		$cosasAHacer[] = 'Actividades';
 	}
 
-
+	if(count($cosasAHacer)==0){
+		echo '<p>Ya no puedes obtener mejor puntuación</p>';
+	}else{
+		echo '
+			<p>Para que la iglesia se posicione mejor es necesario que añadas:</p>
+			<ul>';
+		foreach($cosasAHacer as $item){
+			echo '<li>'.$item.'</li>';
+		}
+		echo '</ul>';
+	}
 ?>
+
