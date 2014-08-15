@@ -4,6 +4,10 @@
 	<!-- BASE -->
 	<title>EIGLESIA</title>
 	<meta charset="UTF-8">
+	<meta name="description" content="Accesibilidad a toda iglesia local a través de la web" />
+	<meta name="keywords" content="buscador de iglesias protestantes,encontrar una iglesia, buscar una iglesia" />
+	<meta name="robots" content="index,follow" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -42,7 +46,9 @@
 			<?php if(Yii::app()->user->name=='Guest'){
 				echo '<div class="login">Acceder</div>';
 			}else{
+				echo '<div class=""><a href="'.Yii::app()->request->baseUrl.'/site/logout" class="form2 button" style="text-align:center;text-decoration:none;float:right;padding-top:10px;height:30px;margin-left:10px;">Logout</a></div>';
 				echo '<div class=""><a href="'.Yii::app()->request->baseUrl.'/admin/index" class="form2 button" style="text-align:center;text-decoration:none;float:right;padding-top:10px;height:30px;">Admin</a></div>';
+
 			}?>
 
 			<div class="mbl-menu" id="mbl-button">
@@ -51,7 +57,7 @@
 				<div class="mbl_menu_el"></div>
 			</div>
 			<ul class="mbl_menu_cont" id="mbl-menu">
-					<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/site/eiglesia">Soy iglesia</a></li>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/site/eiglesia">Soy iglesia</a></li>
 			</ul>
 			<div class="clear"></div>
 			

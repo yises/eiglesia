@@ -4,6 +4,10 @@
 	<!-- BASE -->
 	<title>EIGLESIA</title>
 	<meta charset="UTF-8">
+	<meta name="description" content="Accesibilidad a toda iglesia local a través de la web" />
+	<meta name="keywords" content="buscador de iglesias protestantes,encontrar una iglesia, buscar una iglesia" />
+	<meta name="robots" content="index,follow" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -139,7 +143,6 @@
 
 	  ga('create', 'UA-53671222-1', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
 	
 </body>
