@@ -228,6 +228,10 @@ class MigrationController extends Controller
 				$sql = 'TRUNCATE servant';
 				Yii::app()->db->createCommand($sql)->execute();
 				echo '<p>Pastores vaciado</p>';
+
+				$sql = 'TRUNCATE church_servant';
+				Yii::app()->db->createCommand($sql)->execute();
+				echo '<p>Racion pastores-iglesias vaciado</p>';
 			}
 
 			$iglesias=array();
@@ -358,7 +362,7 @@ class MigrationController extends Controller
 				}
 
 				$pastores=array();
-				$sql = 'SELECT nombre1,nombre2,apellido1,apellido2 FROM zzz_intermedia WHERE org1 ='. $iglesia["id"].' OR org2 ='. $iglesia["id"].' OR org3 ='. $iglesia["id"].' OR org4 ='. $iglesia["id"].' OR org5 ='. $iglesia["id"].' OR org6 ='. $iglesia["id"].' OR org7 ='. $iglesia["id"].' OR org8 ='. $iglesia["id"];
+				$sql = 'SELECT nombre1,nombre2,apellido1,apellido2,titulo FROM zzz_intermedia WHERE org1 ='. $iglesia["id"].' OR org2 ='. $iglesia["id"].' OR org3 ='. $iglesia["id"].' OR org4 ='. $iglesia["id"].' OR org5 ='. $iglesia["id"].' OR org6 ='. $iglesia["id"].' OR org7 ='. $iglesia["id"].' OR org8 ='. $iglesia["id"];
 				$pastores=Yii::app()->db->createCommand($sql)->queryAll();
 
 				echo '<p>Deberian insertarse '.count($pastores).' pastores de la iglesia '.$idChurch.'.</p>';
@@ -375,9 +379,10 @@ class MigrationController extends Controller
 						$numPastor++;
 					}else{
 						$idServant = $servants[0]['id_servant'];
-						echo '<p>Ya está insertado'.$idServant.' <p>';
+						//echo '<p>Ya está insertado'.$idServant.' <p>';
 					}
-					$sql = "INSERT INTO church_servant (id_servant,id_church) VALUES ('".$idServant."','".$idChurch."')";
+					//echo '<p> titulo '.$pastor["titulo"].'<p>'
+					$sql = "INSERT INTO church_servant (id_servant,id_church,charge) VALUES ('".$idServant."','".$idChurch."','".$pastor["titulo"]."')";
 					Yii::app()->db->createCommand($sql)->execute();
 
 				}
