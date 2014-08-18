@@ -117,14 +117,30 @@ class AdminController extends Controller
 		}
 
 		//We obtain the galleries, preaches, address, servants, web presence, badges, activities,...
+		//$address = Address::model()->findAll('id_church='.$id);
+		$sql = 'SELECT a.*,m.name as municipality_name,p.name as province_name,c.name as country_name FROM address a 
+					INNER JOIN municipality m ON m.id_municipality=a.id_municipality 
+					INNER JOIN province p ON p.id_province=a.id_province
+					INNER JOIN country c ON c.id_country=p.id_country
+				WHERE a.id_church='.$id;
+		$addresss = Yii::app()->db->createCommand($sql)->queryAll();
+
+		$sql = 'SELECT t.* FROM telephone t WHERE t.id_church='.$id;
+		$telephones = Yii::app()->db->createCommand($sql)->queryAll();
+
+		$sql = 'SELECT p.* FROM pobox p WHERE p.id_church='.$id;
+		$poboxes = Yii::app()->db->createCommand($sql)->queryAll();
+
+		$sql = 'SELECT e.* FROM email e WHERE e.id_church='.$id;
+		$emails = Yii::app()->db->createCommand($sql)->queryAll();
+
 		$galleries = Gallery::model()->findAll('id_church='.$id);
 		$preaches = Preach::model()->findAll('id_church='.$id);
-		$address = Address::model()->findAll('id_church='.$id);
 
 		$sql = 'SELECT s.* FROM servant s INNER JOIN church_servant cs ON cs.id_servant=s.id_servant WHERE cs.id_church='.$id;
 		$servants = Yii::app()->db->createCommand($sql)->queryAll();
 
-		$sql = 'SELECT w.*,wt.name FROM www w INNER JOIN www_type wt ON wt.id_www_type=w.id_www_type WHERE w.id_church='.$id;
+		$sql = 'SELECT w.*,wt.name as type_name FROM www w INNER JOIN www_type wt ON wt.id_www_type=w.id_www_type WHERE w.id_church='.$id;
 		$wwws = Yii::app()->db->createCommand($sql)->queryAll();
 
 		$sql = 'SELECT b.*,cb.* FROM church_badge cb INNER JOIN badge b ON b.id_badge=cb.id_badge WHERE cb.id_church='.$id;
@@ -133,13 +149,16 @@ class AdminController extends Controller
 		$sql = 'SELECT a.*,at.* FROM activity a INNER JOIN activity_type at ON a.id_activity_type=at.id_activity_type WHERE a.id_church='.$id;
 		$activities = Yii::app()->db->createCommand($sql)->queryAll();
 
-
+		
 
 		$this->render('church/church_update',array(
 			'model'=>$model,
+			'addresss'=>$addresss,
+			'telephones'=>$telephones,
+			'poboxes'=>$poboxes,
+			'emails'=>$emails,
 			'galleries'=>$galleries,
 			'preaches'=>$preaches,
-			'address'=>$address,
 			'servants'=>$servants,
 			'wwws'=>$wwws,
 			'badges'=>$badges,

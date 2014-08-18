@@ -25,7 +25,7 @@
 					<p>'.$church['zipcode'].' '.$church['municipality_name'].' ('.$church['province_name'].')</p>
 				</div>
 				<div class="fl" style="width:190px;padding-top:20px;">
-					<p>Porcentaje: 0</p>
+					<p>Porcentaje: '.$church['points'].'</p>
 				</div>
 			</div>
 		';
