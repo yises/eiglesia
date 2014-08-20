@@ -1,15 +1,18 @@
 
 <?php
-    $submitText = 'Save';
     if($model->isNewRecord){
         $submitText = 'Create';
+        $url = 'addressCreate/';
+    }else{
+        $submitText = 'Save';
+        $url = 'addressUpdate/'.$model['id_address'];
     }
 ?>
 
 
 <div class="form">
 
-<form id="address-form" action="<?php echo Yii::app()->request->baseUrl; ?>/admin/addressUpdate/<?php echo $model['id_address']; ?>" method="post">
+<form id="address-form" action="<?php echo Yii::app()->request->baseUrl; ?>/admin/<?php echo $url; ?>" method="post">
     <div class="row">
         <label for="Address_name">Name</label>
         <input size="60" maxlength="255" name="Address[name]" id="Address_name" type="text" value="<?php echo $model['name']; ?>">

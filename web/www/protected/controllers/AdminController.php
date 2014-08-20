@@ -196,14 +196,18 @@ class AdminController extends Controller
 
 
 
-	public function actionAddressCreate(){
+	public function actionAddressCreate($idChurch=null){
 		$model=new Address;
+		$model->id_church = $idChurch;
 		if(isset($_POST['Address'])){
 			$model->attributes=$_POST['Address'];
 			if($model->save()){
 				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
 			}
 		}
+		$this->render('address/address_create',array(
+			'model'=>$model,
+		));
 	}
 
 	public function actionAddressUpdate($id){
@@ -220,6 +224,57 @@ class AdminController extends Controller
 			'model'=>$model,
 		));
 	}
+
+	public function actionAddressDelete($id){
+		$model=Address::model()->findByPk($id);
+		$idChurch = $model->id_church;
+
+		$model->delete();
+		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
+	}
+
+
+	public function actionTelephoneCreate($idChurch=null){
+		$model=new Telephone;
+		$model->id_church = $idChurch;
+		if(isset($_POST['Telephone'])){
+			$model->attributes=$_POST['Telephone'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+		$this->render('telephone/telephone_create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionTelephoneUpdate($id){
+		$model=Telephone::model()->findByPk($id);
+
+		if(isset($_POST['Telephone'])){
+			$model->attributes=$_POST['Telephone'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+
+		$this->render('telephone/telephone_update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionTelephoneDelete($id){
+		$model=Telephone::model()->findByPk($id);
+		$idChurch = $model->id_church;
+
+		$model->delete();
+		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
+	}
+
+
+
+
+
 
 
 

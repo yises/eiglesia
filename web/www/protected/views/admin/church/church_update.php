@@ -55,7 +55,7 @@
 	?>
 
 	<div id="church_address">
-		<h2>Direcciones</h2>
+		<h2 class="header">Direcciones</h2>
 		<?php 
 		if(count($addresss)>0){
 			foreach($addresss as $address){
@@ -65,32 +65,36 @@
 						<p class="w30">'.$address['street'].' '.$address['number'].'</p>
 						<p class="w10">'.$address['zipcode'].'</p>
 						<p class="w20">'.$address['municipality_name'].' ('.$address['province_name'].')</p>
-						<p class="w10"><a href="'.Yii::app()->request->baseUrl.'/admin/addressUpdate/'.$address['id_address'].'">Editar</a></p>
+						<p class="w10">
+							<a href="'.Yii::app()->request->baseUrl.'/admin/addressUpdate/'.$address['id_address'].'">Editar</a>
+							<a href="'.Yii::app()->request->baseUrl.'/admin/addressDelete/'.$address['id_address'].'">Delete</a>
+						</p>
 					</div>
 					<div class="polosochka" style="float:left;"></div>
 				';
 			}
 		}
-		?>
-		<p><a href="#" class="">Añadir una dirección</a></p>
+		
+		echo '<p><a href="'.Yii::app()->request->baseUrl.'/admin/addressCreate/?idChurch='.$model->id_church.'" class="">Añadir una dirección</a></p>';
+		
 
-		<?php 
 		if(count($telephones)>0){
 			foreach($telephones as $telephone){
 				echo '
 					<div class="w100" >
 						<p class="w30">'.$telephone['number'].'</p>
 						<p class="w30">'.$telephone['description'].'</p>
-						<p class="w10">Editar</p>
+						<p class="w10">
+							<a href="'.Yii::app()->request->baseUrl.'/admin/telephoneUpdate/'.$telephone['id_telephone'].'">Editar</a>
+							<a href="'.Yii::app()->request->baseUrl.'/admin/telephoneDelete/'.$telephone['id_telephone'].'">Delete</a>
+						</p>
 					</div>
 					<div class="polosochka" style="float:left;"></div>
 				';
 			}
 		}
-		?>
-		<p><a href="#" class="">Añadir un teléfono</a></p>
+		echo '<p><a href="'.Yii::app()->request->baseUrl.'/admin/telephoneCreate/?idChurch='.$model->id_church.'" class="">Añadir un teléfono</a></p>';
 
-		<?php 
 		if(count($poboxes)>0){
 			foreach($poboxes as $pobox){
 				echo '
@@ -120,11 +124,11 @@
 			}
 		}
 		?>
-		<p><a href="#" class="">Añadir una dirección</a></p>
+		<p><a href="#" class="">Añadir un mail de contacto</a></p>
 	</div>
 
 	<div id="church_gallery">
-		<h2>Galerías de imágenes</h2>
+		<h2 class="header">Galerías de imágenes</h2>
 		<?php 
 		if(count($galleries)>0){
 			foreach($galleries as $gallery){
@@ -136,7 +140,7 @@
 	</div>
 
 	<div id="church_preach">
-		<h2>Predicaciones</h2>
+		<h2 class="header">Predicaciones</h2>
 		<?php 
 		if(count($preaches)>0){
 			foreach($preaches as $preach){
@@ -148,7 +152,7 @@
 	</div>
 
 	<div id="church_servant">
-		<h2>Pastores/Ancianos/Responsables</h2>
+		<h2 class="header">Pastores/Ancianos/Responsables</h2>
 		<?php 
 		if(count($servants)>0){
 			foreach($servants as $servant){
@@ -160,7 +164,7 @@
 	</div>
 
 	<div id="church_www">
-		<h2>Páginas web</h2>
+		<h2 class="header">Páginas web</h2>
 		<?php 
 		if(count($wwws)>0){
 			foreach($wwws as $www){
@@ -180,7 +184,7 @@
 	</div>
 
 	<div id="church_activity">
-		<h2>Actividades</h2>
+		<h2 class="header">Actividades</h2>
 		<?php 
 		if(count($activities)>0){
 			foreach($activities as $activity){
