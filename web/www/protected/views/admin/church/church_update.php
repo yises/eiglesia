@@ -65,7 +65,7 @@
 						<p class="w30">'.$address['street'].' '.$address['number'].'</p>
 						<p class="w10">'.$address['zipcode'].'</p>
 						<p class="w20">'.$address['municipality_name'].' ('.$address['province_name'].')</p>
-						<p class="w10">Editar</p>
+						<p class="w10"><a href="'.Yii::app()->request->baseUrl.'/admin/addressUpdate/'.$address['id_address'].'">Editar</a></p>
 					</div>
 					<div class="polosochka" style="float:left;"></div>
 				';

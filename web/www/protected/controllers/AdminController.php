@@ -194,4 +194,33 @@ class AdminController extends Controller
 		return $model;
 	}
 
+
+
+	public function actionAddressCreate(){
+		$model=new Address;
+		if(isset($_POST['Address'])){
+			$model->attributes=$_POST['Address'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+	}
+
+	public function actionAddressUpdate($id){
+		$model=Address::model()->findByPk($id);
+
+		if(isset($_POST['Address'])){
+			$model->attributes=$_POST['Address'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+
+		$this->render('address/address_update',array(
+			'model'=>$model,
+		));
+	}
+
+
+
 }

@@ -41,8 +41,8 @@ class Address extends CActiveRecord
 		return array(
 			array('id_church, id_municipality, id_province', 'required'),
 			array('is_active, id_church, id_municipality, id_province', 'numerical', 'integerOnly'=>true),
-			array('latitude, longitude, name, number, zipcode', 'length', 'max'=>45),
-			array('street', 'length', 'max'=>255),
+			array('latitude, longitude, number, zipcode', 'length', 'max'=>45),
+			array('street, name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_address, latitude, longitude, name, street, number, zipcode, is_active, id_church, id_municipality, id_province', 'safe', 'on'=>'search'),
