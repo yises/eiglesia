@@ -39,8 +39,8 @@ class AdminController extends Controller
 
 
 	/* ****************************************************** */
-	// Churchs
-
+	// Church
+	/* ****************************************************** */
 
 	/**
 	 * Lists all models.
@@ -195,7 +195,9 @@ class AdminController extends Controller
 	}
 
 
-
+	/* ****************************************************** */
+	// Address
+	/* ****************************************************** */
 	public function actionAddressCreate($idChurch=null){
 		$model=new Address;
 		$model->id_church = $idChurch;
@@ -233,6 +235,11 @@ class AdminController extends Controller
 		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
 	}
 
+
+
+	/* ****************************************************** */
+	// Telephone
+	/* ****************************************************** */
 
 	public function actionTelephoneCreate($idChurch=null){
 		$model=new Telephone;
@@ -273,8 +280,127 @@ class AdminController extends Controller
 
 
 
+	/* ****************************************************** */
+	// Pobox
+	/* ****************************************************** */
+	public function actionPoboxCreate($idChurch=null){
+		$model=new Pobox;
+		$model->id_church = $idChurch;
+		if(isset($_POST['Pobox'])){
+			$model->attributes=$_POST['Pobox'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+		$this->render('pobox/pobox_create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionPoboxUpdate($id){
+		$model=Pobox::model()->findByPk($id);
+
+		if(isset($_POST['Pobox'])){
+			$model->attributes=$_POST['Pobox'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+
+		$this->render('pobox/pobox_update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionPoboxDelete($id){
+		$model=Pobox::model()->findByPk($id);
+		$idChurch = $model->id_church;
+
+		$model->delete();
+		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
+	}
 
 
+	/* ****************************************************** */
+	// Email
+	/* ****************************************************** */
+	public function actionEmailCreate($idChurch=null){
+		$model=new Email;
+		$model->id_church = $idChurch;
+		if(isset($_POST['Email'])){
+			$model->attributes=$_POST['Email'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+		$this->render('email/email_create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionEmailUpdate($id){
+		$model=Email::model()->findByPk($id);
+
+		if(isset($_POST['Email'])){
+			$model->attributes=$_POST['Email'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+
+		$this->render('email/email_update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionEmailDelete($id){
+		$model=Email::model()->findByPk($id);
+		$idChurch = $model->id_church;
+
+		$model->delete();
+		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
+	}
+
+
+	/* ****************************************************** */
+	// Www
+	/* ****************************************************** */
+	public function actionWwwCreate($idChurch=null){
+		$model=new Www;
+		$model->id_church = $idChurch;
+		if(isset($_POST['Www'])){
+			$model->attributes=$_POST['Www'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+		$this->render('www/www_create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionWwwUpdate($id){
+		$model=Www::model()->findByPk($id);
+
+		if(isset($_POST['Www'])){
+			$model->attributes=$_POST['Www'];
+			if($model->save()){
+				$this->redirect(array('ChurchUpdate','id'=>$model->id_church));
+			}
+		}
+
+		$this->render('www/www_update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionWwwDelete($id){
+		$model=Email::model()->findByPk($id);
+		$idChurch = $model->id_church;
+
+		$model->delete();
+		$this->redirect(array('ChurchUpdate','id'=>$idChurch));
+	}
 
 
 

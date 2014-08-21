@@ -101,54 +101,73 @@
 					<div class="w100" >
 						<p class="w30">'.$pobox['data'].'</p>
 						<p class="w10">'.$pobox['zipcode'].'</p>
-						<p class="w10">Editar</p>
+						<p class="w10">
+							<a href="'.Yii::app()->request->baseUrl.'/admin/poboxUpdate/'.$pobox['id_pobox'].'">Editar</a>
+							<a href="'.Yii::app()->request->baseUrl.'/admin/poboxDelete/'.$pobox['id_pobox'].'">Delete</a>
+						</p>
 					</div>
 					<div class="polosochka" style="float:left;"></div>
 				';
 			}
 		}
-		?>
-		<p><a href="#" class="">Añadir un apartado de correos</a></p>
+		echo '<p><a href="'.Yii::app()->request->baseUrl.'/admin/poboxCreate/?idChurch='.$model->id_church.'" class="">Añadir un apartado de correos</a></p>';
 
-		<?php 
 		if(count($emails)>0){
 			foreach($emails as $email){
 				echo '
 					<div class="w100" >
 						<p class="w30">'.$email['email'].'</p>
 						<p class="w30">'.$email['type'].'&nbsp;</p>
-						<p class="w10">Editar</p>
+						<p class="w10">
+							<a href="'.Yii::app()->request->baseUrl.'/admin/emailUpdate/'.$email['id_email'].'">Editar</a>
+							<a href="'.Yii::app()->request->baseUrl.'/admin/emailDelete/'.$email['id_email'].'">Delete</a>
+						</p>
 					</div>
 					<div class="polosochka" style="float:left;"></div>
 				';
 			}
 		}
+		echo '<p><a href="'.Yii::app()->request->baseUrl.'/admin/emailCreate/?idChurch='.$model->id_church.'" class="">Añadir un mail de contacto</a></p>';
 		?>
-		<p><a href="#" class="">Añadir un mail de contacto</a></p>
+	</div>
+
+	<div id="church_www">
+		<h2 class="header">Páginas web</h2>
+		<?php 
+		if(count($wwws)>0){
+			foreach($wwws as $www){
+				echo '
+					<div class="w100" >
+						<p class="w40"><a href="'.$www['name'].'" target="_blank">'.$www['name'].'</a></p>
+						<p class="w40">'.$www['description'].'&nbsp;</p>
+						<p class="w10">'.$www['type_name'].'</p>
+						<p class="w10">
+							<a href="'.Yii::app()->request->baseUrl.'/admin/wwwUpdate/'.$www['id_www'].'">Editar</a>
+							<a href="'.Yii::app()->request->baseUrl.'/admin/wwwDelete/'.$www['id_www'].'">Delete</a>
+						</p>
+					</div>
+					<div class="polosochka" style="float:left;"></div>
+				';
+			}
+		}
+		echo '<p><a href="'.Yii::app()->request->baseUrl.'/admin/wwwCreate/?idChurch='.$model->id_church.'" class="">Añadir una dirección web</a></p>';
+		?>
 	</div>
 
 	<div id="church_gallery">
 		<h2 class="header">Galerías de imágenes</h2>
+		<div class="w100" >
 		<?php 
 		if(count($galleries)>0){
 			foreach($galleries as $gallery){
-				echo '';
+				echo '
+					<p>Una galería</p>
+				';
 			}
 		}
 		?>
+		</div>
 		<p><a href="#" class="">Añadir una galería</a></p>
-	</div>
-
-	<div id="church_preach">
-		<h2 class="header">Predicaciones</h2>
-		<?php 
-		if(count($preaches)>0){
-			foreach($preaches as $preach){
-				echo '';
-			}
-		}
-		?>
-		<p><a href="#" class="">Añadir una predicación</a></p>
 	</div>
 
 	<div id="church_servant">
@@ -163,26 +182,6 @@
 		<p><a href="#" class="">Añadir un servidor</a></p>
 	</div>
 
-	<div id="church_www">
-		<h2 class="header">Páginas web</h2>
-		<?php 
-		if(count($wwws)>0){
-			foreach($wwws as $www){
-				echo '
-					<div class="w100" >
-						<p class="w40"><a href="'.$www['name'].'" target="_blank">'.$www['name'].'</a></p>
-						<p class="w40">'.$www['description'].'&nbsp;</p>
-						<p class="w10">'.$www['type_name'].'</p>
-						<p class="w10">Editar</a></p>
-					</div>
-					<div class="polosochka" style="float:left;"></div>
-				';
-			}
-		}
-		?>
-		<p><a href="#" class="">Añadir una dirección web</a></p>
-	</div>
-
 	<div id="church_activity">
 		<h2 class="header">Actividades</h2>
 		<?php 
@@ -193,6 +192,18 @@
 		}
 		?>
 		<p><a href="#" class="">Añadir una actividad</a></p>
+	</div>
+
+	<div id="church_preach">
+		<h2 class="header">Predicaciones</h2>
+		<?php 
+		if(count($preaches)>0){
+			foreach($preaches as $preach){
+				echo '';
+			}
+		}
+		?>
+		<p><a href="#" class="">Añadir una predicación</a></p>
 	</div>
 	
 </div>
