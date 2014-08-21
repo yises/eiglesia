@@ -371,6 +371,10 @@ class MigrationController extends Controller
 					//Si ya lo hemos insertado anteriormente
 					$sql = "SELECT id_servant FROM servant WHERE name ='".$pastor["nombre1"]." ".$pastor["nombre2"]."' AND lastname='".$pastor["apellido1"]." ".$pastor["apellido2"]."'";
 					$servants =Yii::app()->db->createCommand($sql)->queryAll();
+					
+					if (count($servants)>1){
+						echo '<p>Nombre servant'.$pastor["nombre1"]." ".$pastor["nombre2"]."' AND lastname='".$pastor["apellido1"]." ".$pastor["apellido2"].' <p>';
+					}
 
 					if (count($servants)==0){
 						$sql = "INSERT INTO servant (name,lastname) VALUES ('".$pastor["nombre1"]." ".$pastor["nombre2"]."','".$pastor["apellido1"]." ".$pastor["apellido2"]."')";
